@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+body{
+    padding: 0;
+    margin: 0; 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/LevelMario.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'oswald', sans-serif;
+}
+.headertitle{
+    margin: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+a{ 
+    color: white;
+    text-decoration: none;
+}
+.dropdown-menu .dropdown-item {
+    background-color: transparent;
+}
+.navbar-nav a {
+    background-color: transparent;
+}
+.inscription{
+    text-decoration: none;
+    background: none;
+    border: none;
+    color: white;
+        transition: text-decoration 0.5s ease;
+        &:hover {
+            font-style: italic;
+        }
+    }
+.nav{
+    background-color: transparent;
+    display: flex;
+    justify-content:space-around;
+}
+.captaintoad{
+    height: 45px;
+}
+.dropdown-menu{
+    background: none;
+} 
+.card{
+    float: none;
+    border-radius:15px;
+}
+.linecard{
+    border: 1px solid black;
+    width: auto;
+}
+.btnstar{
+    width: 10vh;
+    transition: transform 450ms;
+    &:hover {
+        transform: scale(1.30);
+    }
+}
+.tophead{
+    float: right;
+    text-decoration: none;
+    transition: text-decoration 0.5s ease;
+    &:hover {
+        text-decoration: underline;
+    }
+}
