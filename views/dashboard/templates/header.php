@@ -72,24 +72,4 @@
                 </div>
             </div>
         </nav>
-    </header> <!--
-                <li>
-                    <a href="#tips">
-                        Astuces
-                    </a>
-                </li>
-                <li>
-                    <a href="#ranksplayers">
-                        Classement Meilleurs Joueurs
-                    </a>
-                </li>
-                <li>
-                    <a href="#lastranks">
-                        Classement Tournoi
-                    </a>
-                </li>
-                <li class="log-out">
-                    <a href="">
-                        Se déconnectez
-                    </a>
-                </li> -->
+    </header> 

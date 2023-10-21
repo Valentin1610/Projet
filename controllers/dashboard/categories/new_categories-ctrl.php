@@ -7,7 +7,6 @@ try {
     $errors = [];
     $title = "Ajouter une catégorie • DashBoard";
 
-
     if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $type = filter_input(INPUT_POST, 'type', FILTER_SANITIZE_SPECIAL_CHARS);
         if (empty($type)) {
@@ -22,6 +21,11 @@ try {
             $newType = new Category();
             $newType->set_type($type);
             $saved = $newType->new();
+
+            if($saved){
+                header('location: /controllers/dashboard/categories/list_categories-ctrl.php');
+                die;
+            }
         }
     }
 } catch (\Throwable $th) {

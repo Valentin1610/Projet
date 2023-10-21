@@ -66,7 +66,7 @@ class Category{
         return $result;
     }
 
-    public function update()
+    public function update() :bool
     {
         $pdo = connect();
         $sql = "UPDATE `types` SET `type` = :type WHERE `id_types` = :id_types ;";
@@ -77,5 +77,15 @@ class Category{
         $result = $sth->fetchAll();
 
         return $result;
+    }
+
+    public static function delete(int $id_types) :bool
+    {
+        $pdo = connect();
+        $sql = "DELETE FROM `categories` WHERE `id_types` = ?;";
+        $sth = $pdo->prepare($sql);
+        $sth->execute([$id_types]);
+        return (bool) $sth->rowCount();
+
     }
 }

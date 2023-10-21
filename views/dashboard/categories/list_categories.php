@@ -14,7 +14,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <?= $type->id_types ?> 
+                            <?= $type->id_types ?>
                         </td>
                         <td>
                             <?= $type->type ?>
@@ -25,7 +25,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href="">
+                            <a href="/controllers/dashboard/categories/delete_categories-ctrl.php?id_types=<?= $type->id_types ?>">
                                 <i class="fa-solid fa-trash text-danger"></i>
                             </a>
                         </td>
