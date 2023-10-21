@@ -1,7 +1,7 @@
 <?php 
 
 try{
-    $title = 'Accueil du Dashboard';
+    $title = 'Accueil';
 
 } catch (\Throwable $th){
     $errors = $th->getMessage();

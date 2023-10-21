@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/assets/css/dashboard.css">
     <link rel="shortcut icon" href="/public/assets/img/outils.png">
@@ -11,9 +12,11 @@
 </head>
 
 <body>
-    <header>
-        <h1 class="text-center fst-italic">DashBoard</h1>
+    <header class="bg-primary">
         <nav class="navbar navbar-expand-md">
+            <a class="text-decoration-none" href="/controllers/dashboard/dashboard-ctrl.php">
+                <h1 class="text-center text-dark fst-italic p-2 m-3">DashBoard</h1>
+            </a>
             <div class="container-fluid text-center">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,17 +28,17 @@
                                 Catégories
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="">Ajouter une Catégorie</li></a>
-                                <li><a class="dropdown-item" href="">Liste de toutes les Catégories</li></a>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/categories/new_categories-ctrl.php">Ajouter une Catégorie</li></a>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/categories/list_categories-ctrl.php">Liste de toutes les Catégories</li></a>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Consoles
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="">Ajouter une Console</li></a>
-                                <li><a class="dropdown-item" href="">Liste de toutes les Consoles</li></a>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/consoles/new_consoles-ctrl.php">Ajouter une Console</li></a>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/consoles/list_consoles-ctrl.php">Liste de toutes les Consoles</li></a>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -43,8 +46,8 @@
                                 Jeux
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="">Ajouter un Jeu</li></a>
-                                <li><a class="dropdown-item" href="">Liste de tout les Jeux</li></a>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/games/new_games-ctrl.php">Ajouter un Jeu</li></a>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/games/list_games.ctrl.php">Liste de tout les Jeux</li></a>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -52,8 +55,8 @@
                                 Astuces
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="">Ajouter une astuce</li></a>
-                                <li><a class="dropdown-item" href="">Liste de toutes les astuces</li></a>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/tips/new_tips-ctrl.php">Ajouter une astuce</li></a>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/tips/list_tips-ctrl.php">Liste de toutes les astuces</li></a>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
