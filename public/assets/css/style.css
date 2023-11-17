@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
 body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/LevelMario.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    font-family: 'oswald', sans-serif;
+    font-family: 'agbalumo', sans-serif;
 }
 .headertitle {
     display: flex;
