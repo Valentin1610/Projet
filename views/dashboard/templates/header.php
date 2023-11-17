@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <header class="bg-primary">
+    <header class="bg-primary h-75">
         <nav class="navbar navbar-expand-md">
             <a class="text-decoration-none" href="/controllers/dashboard/dashboard-ctrl.php">
                 <h1 class="text-center text-dark fst-italic p-2 m-3">DashBoard</h1>
@@ -28,8 +28,8 @@
                                 Catégories
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/controllers/dashboard/categories/new_categories-ctrl.php">Ajouter une Catégorie</li></a>
-                                <li><a class="dropdown-item" href="/controllers/dashboard/categories/list_categories-ctrl.php">Liste de toutes les Catégories</li></a>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/categories/new_categories-ctrl.php">Ajouter une Catégorie</a></li>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/categories/list_categories-ctrl.php">Liste de toutes les Catégories</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -37,8 +37,8 @@
                                 Consoles
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/controllers/dashboard/consoles/new_consoles-ctrl.php">Ajouter une Console</li></a>
-                                <li><a class="dropdown-item" href="/controllers/dashboard/consoles/list_consoles-ctrl.php">Liste de toutes les Consoles</li></a>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/consoles/new_consoles-ctrl.php">Ajouter une Console</a></li>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/consoles/list_consoles-ctrl.php">Liste de toutes les Consoles</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -46,8 +46,8 @@
                                 Jeux
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/controllers/dashboard/games/new_games-ctrl.php">Ajouter un Jeu</li></a>
-                                <li><a class="dropdown-item" href="/controllers/dashboard/games/list_games.ctrl.php">Liste de tout les Jeux</li></a>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/games/new_games-ctrl.php">Ajouter un Jeu</a></li>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/games/list_games-ctrl.php">Liste de tout les Jeux</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -55,8 +55,8 @@
                                 Astuces
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/controllers/dashboard/tips/new_tips-ctrl.php">Ajouter une astuce</li></a>
-                                <li><a class="dropdown-item" href="/controllers/dashboard/tips/list_tips-ctrl.php">Liste de toutes les astuces</li></a>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/tips/new_tips-ctrl.php">Ajouter une astuce</a></li>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/tips/list_tips-ctrl.php">Liste de toutes les astuces</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -64,12 +64,15 @@
                                 Évenements
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="">Ajouter un évenement</li></a>
-                                <li><a class="dropdown-item" href="">Liste de tout les évenements</li></a>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/events/add_events-ctrl.php">Ajouter un évenement</a></li>
+                                <li><a class="dropdown-item" href="/controllers/dashboard/events/list_events-ctrl.php">Liste de tout les évenements</a></li>
                             </ul>
                         </li>
+                        <a class="text-decoration-none" href="/controllers/website/home-ctrl.php">
+                            <p class="text-dark fst-italic p-2">Retour sur le site</p>
+                        </a>
                     </ul>
                 </div>
             </div>
         </nav>
-    </header> 
+    </header>

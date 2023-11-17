@@ -1,15 +1,18 @@
-<?php 
+<?php
 
-require_once __DIR__ . '/../config/constants.php';
+require_once __DIR__ . '/constants.php';
 
-function connect()
+class Database
 {
-    try{
-        $pdo = new PDO(DSN, USER, PASSWORD);
-        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-    } catch (PDOException $e){
-        echo 'Erreur : ' . $e->getMessage();
-        
+    private static $pdo;
+
+    public static function connect()
+    {
+        if (is_null(self::$pdo)) {
+            self::$pdo = new PDO(DSN, USER, PASSWORD);
+            self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            self::$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+        }
+        return self::$pdo;
     }
-    return $pdo;
 }

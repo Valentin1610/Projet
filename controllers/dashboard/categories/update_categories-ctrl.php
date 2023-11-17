@@ -2,6 +2,8 @@
 
 require __DIR__ . '/../../../models/Category.php';
 require __DIR__ . '/../../../config/regex.php';
+require_once __DIR__ . '/../../../config/init.php';
+
 
 try {
     $errors = [];

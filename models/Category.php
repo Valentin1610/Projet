@@ -1,6 +1,6 @@
 <?php 
 
-require __DIR__ . '/../config/databaseController.php';
+require_once __DIR__ . '/../config/databaseController.php';
 
 class Category{
     private int $id_types;
@@ -22,7 +22,7 @@ class Category{
 
     public function new() : bool
     {
-        $pdo =connect();
+        $pdo =Database::connect();
         $sql = 'INSERT INTO `categories` (`type`) VALUES (:type) ;' ;
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':type', $this->get_type());
@@ -33,7 +33,7 @@ class Category{
 
     public static function ifExist(string $type) : bool
     {
-        $pdo = connect();
+        $pdo = Database::connect();
         $sql = "SELECT * FROM `categories`
         WHERE `type` = :type ;";
         $sth= $pdo->prepare($sql);
@@ -46,7 +46,7 @@ class Category{
 
     public static function getall() :array
     {
-        $pdo = connect();
+        $pdo = Database::connect();
         $sql = "SELECT * FROM `categories`;";
         $sth = $pdo->query($sql);
         $result = $sth->fetchAll();
@@ -56,7 +56,7 @@ class Category{
 
     public static function get(int $id_types)
     {
-        $pdo = connect();
+        $pdo = Database::connect();
         $sql = "SELECT * FROM `categories` WHERE `id_types` = :id_types";
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':id_types', $id_types, PDO::PARAM_INT);
@@ -68,24 +68,20 @@ class Category{
 
     public function update() :bool
     {
-        $pdo = connect();
-        $sql = "UPDATE `types` SET `type` = :type WHERE `id_types` = :id_types ;";
+        $pdo = Database::connect();
+        $sql = "UPDATE `categories` SET `type` = :type WHERE `id_types` = :id_types ;";
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':type', $this->get_type());
         $sth->bindValue(':id_types', $this->get_id_types(), PDO::PARAM_INT);
-        $sth->execute();
-        $result = $sth->fetchAll();
-
-        return $result;
+        return $sth->execute();
     }
 
     public static function delete(int $id_types) :bool
     {
-        $pdo = connect();
+        $pdo = Database::connect();
         $sql = "DELETE FROM `categories` WHERE `id_types` = ?;";
         $sth = $pdo->prepare($sql);
         $sth->execute([$id_types]);
         return (bool) $sth->rowCount();
-
     }
 }

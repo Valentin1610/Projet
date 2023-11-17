@@ -1,69 +1,150 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
-body{
-    padding: 0;
-    margin: 0; 
+
+body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/LevelMario.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     font-family: 'oswald', sans-serif;
 }
-.headertitle{
-    margin: 15px;
+.headertitle {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
-a{ 
+
+a {
     color: white;
     text-decoration: none;
 }
+
 .dropdown-menu .dropdown-item {
     background-color: transparent;
 }
+
 .navbar-nav a {
     background-color: transparent;
 }
-.inscription{
+
+.inscription {
     text-decoration: none;
     background: none;
     border: none;
     color: white;
-        transition: text-decoration 0.5s ease;
-        &:hover {
-            font-style: italic;
-        }
+    transition: text-decoration 0.5s ease;
+
+    &:hover {
+        font-style: italic;
     }
-.nav{
+}
+
+.nav {
     background-color: transparent;
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
 }
-.captaintoad{
+
+.captaintoad {
     height: 45px;
 }
-.dropdown-menu{
+
+.dropdown-menu {
     background: none;
-} 
-.card{
-    float: none;
-    border-radius:15px;
 }
-.linecard{
+
+.card {
+    float: none;
+    border-radius: 15px;
+}
+
+.consoles {
+    width: 40%;
+}
+
+
+/*Formulaire d'inscription  */
+
+fieldset {
+    color: white;
+    justify-content: center;
+    display: flex;
+}
+
+.form_container {
+    text-align: center;
+    max-width: 60%;
+    width: 90%;
+    border-radius: 10px;
+}
+
+.input_box {
+    color: white;
+    text-align: center;
+    position: relative;
+    margin-top: 35px;
+    border-radius: 5px;
+    width: 95%;
+}
+
+.input_box input {
+    border: none;
+    border-radius: 5px;
+}
+
+.input_box i {
+    float: right;
+    font-size: 18px;
+    padding-left: 5px;
+}
+
+.input_box i.pw_hide {
+    font-style: 16px;
+    cursor: pointer;
+}
+
+.form_container button {
+    background: none;
+    margin-top: 10px;
+    color: white;
+    width: 25%;
+    border-radius: 7px;
+}
+
+label {
+    margin: 4px;
+}
+
+@media screen and (max-width : 1000px) {
+    .form_container {
+        flex-direction: column;
+        max-width: 80%;
+    }
+
+    .form_container .register_form {
+        margin-bottom: 36px;
+        height: 55px;
+    }
+}
+
+/* Fin de formulaire d'inscription */
+
+.linecard {
     border: 1px solid black;
     width: auto;
 }
-.btnstar{
+
+.btnstar {
     width: 10vh;
     transition: transform 450ms;
+
     &:hover {
         transform: scale(1.30);
     }
 }
-.tophead{
+.tophead {
     float: right;
     text-decoration: none;
     transition: text-decoration 0.5s ease;
+
     &:hover {
         text-decoration: underline;
     }

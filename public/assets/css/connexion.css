@@ -1,0 +1,151 @@
+/* Importation d'un police sur google api */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+/* Corps de la page */
+
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/LevelMario.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'oswald', sans-serif;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-menu .dropdown-item {
+    background-color: transparent;
+}
+
+.navbar-nav a {
+    background-color: transparent;
+}
+
+.inscription {
+    text-decoration: none;
+    background: none;
+    border: none;
+    color: white;
+    transition: text-decoration 0.5s ease;
+    &:hover {
+        font-style: italic;
+    }
+}
+.nav {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-around;
+}
+.dropdown-menu{
+    background: none;
+}
+
+/* Formulaire de connexion */
+
+.form_container{
+    margin-top: 10px;
+    width:60%;
+    padding: 25px;
+}
+.home.show .form_container{
+    opacity: 1;
+    pointer-events: auto;
+}
+.form_close{
+    top: 10px;
+    right: 20px;
+    color: #0b0217;
+    font-size: 20px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+.form_container h2 {
+    font-size:20px;
+}
+.form_container a{
+    font-size: 13px;
+}
+.input_box{
+    position: relative;
+    margin-top: 30px;
+    height: 40px;
+}
+.input_box input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    padding: 0 30px;
+    border-bottom:1.5px solid #aaaaaa ;
+}
+.input_box i {
+    position: absolute;
+    top:20%;
+}
+.input_box i.email, .input_box i.password{
+    left: 0px;
+    color: #707070;
+}
+.input_box i.pw_hide{
+    right: 0;
+    font-style: 16px;
+    cursor: pointer;
+}
+.option_field{
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+}
+.checkbox{
+    display: flex;
+    column-gap: 8px;
+}
+.checkbox label{
+    font-size: 10px;
+    user-select: none;
+    cursor: pointer;
+    color: black;
+}
+.form_container button{
+    background: #5597F9;
+    margin-top: 15px;
+    width: 20%;
+    padding: 5px 0;
+    border-radius: 10px;
+}
+.login_signup{
+    font-size: 15px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Fin de formulaire */
+
+/* Footer de la page */
+
+
+footer{
+    margin-top: 50px;
+}
+
+.btnstar {
+    width: 10vh;
+    transition: transform 450ms;
+
+    &:hover {
+        transform: scale(1.30);
+    }
+}
+.tophead {
+    float: right;
+    text-decoration: none;
+    transition: text-decoration 0.5s ease;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

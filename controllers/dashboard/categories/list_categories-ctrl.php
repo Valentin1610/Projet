@@ -1,6 +1,8 @@
 <?php
 
 require __DIR__ . '/../../../models/Category.php';
+require_once __DIR__ . '/../../../config/init.php';
+
 
 try {
     $title = " Liste de toutes les catégories • DashBoard ";

@@ -1,10 +1,12 @@
 <?php 
 
 require __DIR__ . '/../../../models/Category.php';
+require_once __DIR__ . '/../../../config/init.php';
+
 
 try {
     $errors = [];
-    $id_types = filter_input(INPUT_GET, 'id_types',  FILTER_SANITIZE_NUMBER_INT); 
+    $id_types = intval(filter_input(INPUT_GET, 'id_types',  FILTER_SANITIZE_NUMBER_INT)); 
     $ifDelete = Category::delete($id_types);
     header('location: /controllers/dashboard/categories/list_categories-ctrl.php?delete='.$ifDelete);
     die;

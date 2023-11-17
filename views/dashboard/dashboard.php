@@ -12,20 +12,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach($users as $user){ ?>
                     <tr>
-                        <td>dfhdh</td>
-                        <td>dhfdf</td>
+                        <td><?= $user->username ?></td>
+                        <td><?= $user->email ?></td>
                         <td>
-                            <a href="">
+                            <a href="/controllers/dashboard/users/update_users-ctrl.php">
                                 <i class="fa-solid fa-wrench"></i> 
                             </a>
                         </td>
                         <td>
-                            <a href="">
-                                <i class="fa-solid fa-trash"></i>
+                            <a href="/controllers/dashboard/users/delete_users-ctrl.php">
+                                <i class="fa-solid fa-trash text-danger"></i>
                             </a>
                         </td>
                     </tr>
+                <?php } ?>
                 </tbody>
             </table>
         </div>

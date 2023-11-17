@@ -1,9 +1,12 @@
 <?php
 
 require __DIR__ . '/../../../models/Console.php';
+require_once __DIR__ . '/../../../config/init.php';
+
 
 try {
     $title = "Liste de toutes les consoles • DashBoard";
+    $consoles = Console::getAll();
 } catch (\Throwable $th) {
     $errors = $th->getMessage();
 
