@@ -79,9 +79,10 @@ class Category{
     public static function delete(int $id_types) :bool
     {
         $pdo = Database::connect();
-        $sql = "DELETE FROM `categories` WHERE `id_types` = ?;";
+        $sql = "DELETE FROM `categories` WHERE `id_types` = :id_types;";
         $sth = $pdo->prepare($sql);
-        $sth->execute([$id_types]);
+        $sth->bindValue(':id_types', $id_types, PDO::PARAM_INT);
+        $sth->execute();
         return (bool) $sth->rowCount();
     }
 }

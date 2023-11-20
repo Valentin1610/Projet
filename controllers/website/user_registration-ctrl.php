@@ -17,16 +17,17 @@ try {
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+        // Nettoyage des données envoyées par l'utilisateur 
+
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
         if (empty($username)) {
-            $errors['username'] = "Veuillez entrez un pseudo obligatoire";
+            $errors['user'] = "Veuillez entrez un pseudo obligatoire";
         } else {
             $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => REGEX_USERNAME)));
             if (!$isOk) {
-                $errors['username'] = "Certains caractéres ne sont pas autorisés";
+                $errors['user'] = "Certains caractéres ne sont pas autorisés";
             }
         }
-
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
         if (empty($email)) {
             $errors['email'] = "Veuillez entrez une adresse mail";
@@ -36,19 +37,16 @@ try {
                 $errors['email'] = "Cette adresse mail n'est pas correct";
             }
         }
-
         $password = filter_input(INPUT_POST, 'password');
         if (empty($password)) {
             $errors['password'] = "Veuillez entrez un mot de passe";
         } elseif (strlen($password) < 12) {
             $errors['password'] = "Veuillez entrez un mot de passe avec au moins 12 caractéres";
         }
-
         $passwordVerif = filter_input(INPUT_POST, 'passwordVerif');
         if (empty($passwordVerif)) {
             $errors['passwordVerif'] = "Veuillez entrez le mot de passe";
         }
-
         try {
             $newProfil = "";
             $profil = $_FILES['profil'];
@@ -73,25 +71,26 @@ try {
             $errors = $th->getMessage();
         }
         if (empty($errors)) {
+            // Attribution du rôle utilisateur lors de l'inscription
+            $role = 0;
+            // Créeation d'un nouvel objet de la class User
             $newUser = new User();
+            // Vérification de la disponibilité du pseudo et de l'email
             if (User::ifExists($username, $email)) {
-                $errors['username'] = "Le pseudo existe déjà";
+                $errors['user'] = "Le pseudo existe déjà";
                 $errors['email'] = "L'email existe déjà";
             } else {
+                // Si il n'y a pas d'erreur, on hydrate l'objet
                 $newUser->set_username($username);
                 $newUser->set_email($email);
                 $newUser->set_password($password);
                 $newUser->set_profile($newProfil);
-                $userType = filter_input(INPUT_POST, 'role');
-                $role = ($UserType === 1) ? 1 : 0;
                 $newUser->set_role($role);
+                // Enregistrement de l'utilisateur dans la base de données
                 $saved = $newUser->add();
 
-                if (!empty($errors)) {
-                    $errors['general'] = "Une erreur s'est produite lors de la vérification de l'existence du pseudo ou de l'email.";
-                }
+                
                 if ($saved) {
-                    $message = "Votre compte a bien été crée, vous pouvez vous connecter";
                     header('location: /controllers/website/user_registration-ctrl.php');
                     die;
                 }

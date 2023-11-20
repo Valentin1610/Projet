@@ -12,11 +12,11 @@ try {
 
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
         if(empty($username)){
-            $errors['username'] = "Veuillez entrez votre pseudo";
+            $errors['user'] = "Veuillez entrez votre pseudo";
         } else{
             $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => REGEX_USERNAME)));
             if(!$isOk){
-                $erros['username'] = "Ce pseudo n'est pas valide";
+                $erros['user'] = "Ce pseudo n'est pas valide";
             }
         }
 

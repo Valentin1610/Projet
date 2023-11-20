@@ -52,11 +52,12 @@ class User {
         $this->role = $role;
     }
 
+    // Création d'une nouvelle méthode pour ajouter un utilisateur
     public function add() :bool{
 
         $pdo = Database::connect();
         $sql = "INSERT INTO `users` (`username`, `email`, `password` ,`profil`)
-        VALUES (:username, :email, :password, :profil)";
+        VALUES (:username, :email, :password, :profil);";
         $sth= $pdo->prepare($sql);
         $sth->bindValue(':username', $this->get_username());
         $sth->bindValue(':email', $this->get_email());

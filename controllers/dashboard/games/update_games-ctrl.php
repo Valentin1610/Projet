@@ -14,7 +14,11 @@ try {
     $id_games = intval(filter_input(INPUT_GET, 'id_games', FILTER_SANITIZE_NUMBER_INT));
     $games = Game::get($id_games);
 
+    // Les données de l'utilisateur sont transmis en post afin de récupérer les données
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        // Nettoyage et validation des données
 
         $id_types = intval(filter_input(INPUT_POST, 'id_types', FILTER_SANITIZE_NUMBER_INT));
         if (!$id_types) {
@@ -52,6 +56,8 @@ try {
                 $errors['description'] = 'Entrez un la description compris entre 20 et 450 caractéres';
             }
         }
+        // Vérification du fichier 
+
         $picture = $_FILES['picture'];
         $newNameFile = NULL;
         if ($picture['error'] != 4) {
@@ -74,16 +80,20 @@ try {
                 $errors = $th->getMessage();
             }
         }
-        if(empty($errors)){
+        if (empty($errors)) {
+            // Création d'un nouvel objet
             $newGame = new Game;
+            // Hydratation de l'objet 
             $newGame->set_id_games($id_games);
             $newGame->set_game($game);
             $newGame->set_description($description);
             $newGame->set_picture($newNameFile);
             $newGame->set_id_types($id_types);
             $newGame->set_id_consoles($id_consoles);
+            // Appel de la méthode pour mettre à jour le jeu
             $saved = $newGame->update_game();
-            if($saved){
+            // Si $saved est vrai alors on redirige vers la liste des jeux
+            if ($saved) {
                 header('location: /controllers/dashboard/games/list_games-ctrl.php');
                 die;
             }

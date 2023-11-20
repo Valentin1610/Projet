@@ -90,9 +90,10 @@ class Event {
     public static function delete(int $id_events) :bool {
 
         $pdo = Database::connect();
-        $sql = "DELETE FROM `events` WHERE `id_events` = ?;";
+        $sql = "DELETE FROM `events` WHERE `id_events` = `id_events`;";
         $sth = $pdo->prepare($sql);
-        $sth->execute([$id_events]);
+        $sth->bindValue(':id_events', $id_events, PDO::PARAM_INT);
+        $sth->execute();
         return (bool) $sth->rowCount();
     }
 }

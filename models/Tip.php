@@ -134,9 +134,10 @@ class Tip {
     public static function delete(int $id_tips) :bool
     {
         $pdo = Database::connect();
-        $sql = "DELETE FROM `tips` WHERE `id_tips` = ?;";
+        $sql = "DELETE FROM `tips` WHERE `id_tips` = :id_tips;";
         $sth = $pdo->prepare($sql);
-        $sth->execute([$id_tips]);
+        $sth->bindValue(':id_tips', $id_tips, PDO::PARAM_INT);
+        $sth->execute();
         return (bool) $sth->rowCount();
     }
 }

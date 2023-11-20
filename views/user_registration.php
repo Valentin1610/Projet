@@ -12,7 +12,7 @@
                     <label for="username">Pseudo : *</label>
                     <input class="form-control" type="text" id="username" name="username" placeholder="Entrez votre pseudo" required>
                     <p class="d-none form-text error text-danger" id="helpusername">Veuillez entrez un Pseudo valide qui contient au moins 4 caractéres</p>
-                    <p><?= isset($errors['username']) ? $errors['username'] : "" ?></p>
+                    <p><?= isset($errors['user']) ? $errors['user'] : "" ?></p>
                 </div>
                 <div class="input_box">
                     <label for="email">Adresse Mail : *</label>
@@ -42,14 +42,11 @@
                     <p>* : signifie que les champs sont obligatoires</p>
                 </div>
                 <div class="text-center">
-                    <button type="submit">S'inscrire</button>
+                    <button type="submit">
+                        S'inscrire
+                    </button>
                 </div>
             </form>
-            <?php if (!empty($errors)) { ?>
-                <p><?= $errors['general'] ?></p>
-            <?php } else{ ?>
-                <p><?= $message ?></p>
-            <?php } ?>
         </div>
     </fieldset>
 </main>

@@ -1,14 +1,16 @@
 <?php
 
-require __DIR__ .'/../../models/Category.php';
-require __DIR__ . '/../../models/Tip.php';
-require __DIR__ . '/../../config/init.php';
+require_once __DIR__ .'/../../models/Category.php';
+require_once __DIR__ . '/../../models/Tip.php';
+require_once __DIR__ . '/../../config/init.php';
+require_once __DIR__ . '/../../models/Game.php';
 
 
 try{
     $css = 'style.css';
     $categories = Category::getall();
     $title = 'Accueil • Guide Ultime de Mario';
+
 } catch(\Throwable $th){
     $error = $th->getMessage();
     include __DIR__ . '/../../views/templates/header.php';

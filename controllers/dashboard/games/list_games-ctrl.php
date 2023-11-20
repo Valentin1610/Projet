@@ -14,7 +14,9 @@ try {
     if (empty($page)) {
         $page = 1;
     }
-    $games = Game::get_all(page: $page, all:false);
+    // Appelle de la méthode pour récupérer les jeux pour une page donné
+    $games = Game::get_all($page, all:false);
+    // Appelle de la méthode pour récupérer tous les jeux 
     $totalGames = Game::get_all(all: true);
     
     $nbGames = count($totalGames);

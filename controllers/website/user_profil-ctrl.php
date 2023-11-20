@@ -2,21 +2,20 @@
 
 require_once __DIR__ . '/../../config/init.php';
 require_once __DIR__ . '/../../models/Category.php';
-require __DIR__ . '/../../models/User.php';
+require_once __DIR__ . '/../../models/Game.php';
+require_once __DIR__ . '/../../models/User.php';
 require_once __DIR__ . '/../../models/Tip.php';
 require_once __DIR__ . '/../../models/User_Tip.php';
 
-if (!$_SESSION['username']) {
-    header('location: ');
-}
 try {
     $errors = [];
     $css = 'style.css';
     $categories = Category::getall();
     $title = 'Modifier votre profil • Guide Ultime de Super Mario';
 
-    $id_user = intval(filter_input(INPUT_GET, 'id_user', FILTER_SANITIZE_NUMBER_INT));
-    $users = User::get($id_user);
+    // Appelle de la méthode getFav() à partir de la classe User_Tip stockée dasn une variable
+    $favs = User_Tip::getFav();
+
 } catch (\Throwable $th) {
     $errors = $th->getMessage();
 

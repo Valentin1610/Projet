@@ -11,7 +11,7 @@
 <section class="p-3 text-white text-center">
     <h2>Présentation du Site</h2>
     <p class="p-4">
-        Bienvenue sur mon Site Internet où vous trouverez pleins d'astuces sur les différents Jeux Mario. <br>Mais aussi des inscriptions à des Tournois sur différents Jeux Mario.
+        Bienvenue au Royaume Champignon ou plutôt bienvenue sur mon Site Internet où vous trouverez pleins d'astuces sur les différents Jeux Mario. <br>Mais aussi des inscriptions à des Tournois sur différents Jeux Mario.
         Créer par Valentin Sucaud.
     </p>
 </section>

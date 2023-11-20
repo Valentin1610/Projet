@@ -9,24 +9,35 @@
     </div>
     <h2 class="text-center text-white mt-2"><?= $games->game ?></h2>
     <p class="text-center text-white mt-4"><?= $games->description ?></p>
-    <table class="table w-75 text-center mx-auto mt-5">
-        <thead>
-            <tr>
-                <th>Titre de l'astuce</th>
-                <th>Description de l'astuce</th>
-                <th>Case à cocher</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($tips as $tip) { ?>
+    <form method="post" enctype="multipart/form-data">
+        <table class="table w-75 text-center mx-auto mt-5">
+            <thead>
                 <tr>
-                    <td><?= $tip->tip ?></td>
-                    <td><?= $tip->description_tip ?></td>
-                    <td>
-                        <input type="checkbox" name="validate<?= $tip->id_tips ?>" id="validate<?= $tip->id_tips ?>">
-                    </td>
+                    <th>Titre de l'astuce</th>
+                    <th>Description de l'astuce</th>
+                    <th>Case à cocher</th>
                 </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($tips as $tip) { ?>
+                    <tr>
+                        <td><?= $tip->tip ?></td>
+                        <td><?= $tip->description_tip ?></td>
+                        <td>
+                            <?php if (isset($_SESSION['user'])) { ?>
+                                <input type="checkbox" name="selected_tips[]" id="validate<?= $tip->id_tips ?>" value="<?= $tip->id_tips ?>">
+                            <?php } else { ?>
+                                <p>Veuillez vous connecter</p>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <?php if (isset($_SESSION['user'])) { ?>
+                <button class="bg-primary" type="submit">Enregistrer</button>
             <?php } ?>
-        </tbody>
-    </table>
+        </div>
+    </form>
 </main>

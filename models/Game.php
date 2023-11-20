@@ -74,7 +74,8 @@ class Game
     {
         $this->id_user = $id_user;
     }
-
+    
+    // Création d'une méthode pour ajouter un jeu
     public function add(): bool
     {
         $pdo = Database::connect();
@@ -88,9 +89,26 @@ class Game
         $sth->bindValue(':id_types', $this->get_id_types());
         $sth->bindValue(':id_user', $this->get_id_user());
         $result = $sth->execute();
-
+        
         return $result !== false;
     }
+
+    // Méthode qui nous permettre de récupérer une donnée précise
+
+    public static function get(int $id_games)
+    {
+        $pdo = Database::connect();
+        $sql = "SELECT * FROM `games` 
+        WHERE `id_games` = :id_games;";
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id_games', $id_games, PDO::PARAM_INT);
+        $sth->execute();
+        $result = $sth->fetch();
+    
+        return $result;
+    }
+
+    // Création d'une méthode pour afficher les jeux en fonction du nombre d'element par page
 
     public static function get_all(int $page = 1, bool $all = false): array
     {
@@ -126,19 +144,8 @@ class Game
 
         return $result;
     }
-    public static function get(int $id_games)
-    {
 
-        $pdo = Database::connect();
-        $sql = "SELECT * FROM `games` 
-        WHERE `id_games` = :id_games;";
-        $sth = $pdo->prepare($sql);
-        $sth->bindValue(':id_games', $id_games, PDO::PARAM_INT);
-        $sth->execute();
-        $result = $sth->fetch();
-
-        return $result;
-    }
+    // Création d'une méthode qui va permettre de modifier un jeu
 
     public function update_game(): array
     {
@@ -160,19 +167,19 @@ class Game
         $sth->bindValue(':id_consoles', $this->get_id_consoles(), PDO::PARAM_INT);
         $sth->bindValue(':id_types', $this->get_id_types(), PDO::PARAM_INT);
         $sth->bindValue(':id_games', $this->get_id_games(), PDO::PARAM_INT);
-        $sth->execute();
-        $result = $sth->fetchAll();
-
-        return $result;
+        return $sth->execute();
     }
 
+    // Création d'une méthode pour supprimer un jeu
+    
     public static function delete(int $id_games): bool
     {
 
         $pdo = Database::connect();
-        $sql = "DELETE FROM `games` WHERE `id_games` = ? ;";
+        $sql = "DELETE FROM `games` WHERE `id_games` = :id_games ;";
         $sth = $pdo->prepare($sql);
-        $sth->execute([$id_games]);
+        $sth->bindValue(':id_games', $id_games, PDO::PARAM_INT);
+        $sth->execute();
         return (bool) $sth->rowCount();
     }
 

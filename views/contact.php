@@ -7,7 +7,7 @@
 
                 <input type="text" name="username" id="username" placeholder="Entrez votre pseudo" required>
                 <p class="d-none error text-danger">Entrez un pseudo valide </p>
-                <p><?= isset($errors['username']) ? $errors['username'] : "" ?></p>
+                <p><?= isset($errors['user']) ? $errors['user'] : "" ?></p>
 
                 <input type="email" name="email" id="email" placeholder="Entrez votre adresse mail" required>
                 <p class="d-none error text-danger">Entrez une adresse mail</p>

@@ -6,7 +6,7 @@
                 <div class="input_box">
                     <input class="text-center" type="text" placeholder="Entrer votre pseudo" id="username" name="username" required>
                     <p id="usernameerrortext" class="d-none text-danger form-text error form-text ">Veuillez entrez un pseudo valide</p>
-                    <p><?= isset($errors['username']) ? $errors['username'] : "" ?></p>
+                    <p><?= isset($errors['user']) ? $errors['user'] : "" ?></p>
                 </div>
                 <div class="input_box">
                     <input class="text-center" type="password" name="password" id="password" placeholder="Entrer votre Mot de passe" required>

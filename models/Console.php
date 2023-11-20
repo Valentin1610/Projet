@@ -138,9 +138,10 @@ class Console
     public static function delete(int $id_consoles)
     {
         $pdo = Database::connect();
-        $sql = "DELETE FROM `consoles` WHERE `id_consoles` = ?;";
+        $sql = "DELETE FROM `consoles` WHERE `id_consoles` = `id_consoles`;";
         $sth = $pdo->prepare($sql);
-        $sth->execute([$id_consoles]);
+        $sth->bindValue(':id_consoles', $id_consoles, PDO::PARAM_INT);
+        $sth->execute();
         return (bool) $sth->rowCount();
     }
 }
