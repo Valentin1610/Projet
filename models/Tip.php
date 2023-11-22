@@ -1,8 +1,9 @@
-<?php 
+<?php
 
 require_once __DIR__ . '/../config/databaseController.php';
 
-class Tip {
+class Tip
+{
     private int $id_tips;
     private string $tip;
     private string $description_tip;
@@ -10,49 +11,64 @@ class Tip {
     private $id_user;
     private $id_games;
 
-    public function get_id_tips() :int{
+    public function get_id_tips(): int
+    {
         return $this->id_tips;
     }
-    public function set_id_tips(int $id_tips){
+    public function set_id_tips(int $id_tips)
+    {
         $this->id_tips = $id_tips;
     }
 
-    public function get_tip() :string{
+    public function get_tip(): string
+    {
         return $this->tip;
     }
-    public function set_tip(string $tip){
+    public function set_tip(string $tip)
+    {
         $this->tip = $tip;
     }
 
-    public function get_description_tip() :string{
+    public function get_description_tip(): string
+    {
         return $this->description_tip;
     }
-    public function set_description_tip(string $description_tip){
+    public function set_description_tip(string $description_tip)
+    {
         $this->description_tip = $description_tip;
     }
 
-    public function get_validate() :bool{
+    public function get_validate(): bool
+    {
         return $this->validate;
     }
-    public function set_validate(bool $validate){
+    public function set_validate(bool $validate)
+    {
         $this->validate = $validate;
     }
-    
-    public function get_id_user() {
+
+    public function get_id_user()
+    {
         return $this->id_user;
     }
-    public function set_id_users($id_user){
+    public function set_id_users($id_user)
+    {
         $this->id_user = $id_user;
     }
 
-    public function get_id_games() :int{
+    public function get_id_games(): int
+    {
         return $this->id_games;
     }
-    public function set_id_games(int $id_games){
+    public function set_id_games(int $id_games)
+    {
         $this->id_games = $id_games;
     }
 
-    public function add() :bool {
+    // Méthode pour ajouter une astuce
+
+    public function add(): bool
+    {
 
         $pdo = Database::connect();
         $sql = "INSERT INTO `tips` (`tip`, `description_tip`, `id_user`, `id_games`)
@@ -67,34 +83,39 @@ class Tip {
         return $result !== false;
     }
 
-    public static function get($id_tips) {
+    // Méthode pour 
+
+    public static function get($id_tips)
+    {
 
         $pdo = Database::connect();
         $sql = "SELECT * FROM `tips`
         WHERE `id_tips` = :id_tips;";
-        $sth=$pdo->prepare($sql);
+        $sth = $pdo->prepare($sql);
         $sth->bindValue(':id_tips', $id_tips, PDO::PARAM_INT);
         $sth->execute();
         $result = $sth->fetch(PDO::FETCH_OBJ);
 
         return $result;
-
     }
 
-    public static function getAll(int $page = 1, bool $all = false): array{
+    // Méthode pour afficher les astuces en fonction du nombre d'astuce par page
 
-        $offset = ($page - 1 ) * NB_ELEMENTS_PER_PAGE;
+    public static function getAll(int $page = 1, bool $all = false): array
+    {
+
+        $offset = ($page - 1) * NB_ELEMENTS_PER_PAGE;
         $pdo = Database::connect();
         $sql = "SELECT * FROM `tips`
         INNER JOIN `games`
         ON `tips`.`id_games` = `games`.`id_games`;";
 
-        if(!$all){
+        if (!$all) {
             $sql = $sql . " LIMIT :limit OFFSET :offset;";
         }
         $sth = $pdo->prepare($sql);
 
-        if(!$all){
+        if (!$all) {
             $sth->bindValue(':limit', $offset, PDO::PARAM_INT);
             $sth->bindValue(':offset', NB_ELEMENTS_PER_PAGE, PDO::PARAM_INT);
         }
@@ -104,7 +125,10 @@ class Tip {
         return $result;
     }
 
-    public function update() {
+    // Méthode pour mettre à jour une astuce
+
+    public function update() :bool
+    {
         $pdo = Database::connect();
         $sql = "UPDATE `tips` SET `tip` = :tip, `description_tip` = :description_tip, `id_games` = :id_games
         WHERE `id_tips` = :id_tips ;";
@@ -113,13 +137,14 @@ class Tip {
         $sth->bindValue(':description_tip', $this->get_description_tip());
         $sth->bindValue(':id_tips', $this->get_id_tips(), PDO::PARAM_INT);
         $sth->bindValue(':id_games', $this->get_id_games(), PDO::PARAM_INT);
-        $sth->execute();
-        $result = $sth->fetchAll();
-
+        $result = $sth->execute();
         return $result;
     }
 
-    public static function  get_all_tips($id_games){
+    // Méthode pour afficher toutes les astuces en fonction de l'id du jeu
+
+    public static function get_all_tips($id_games)
+    {
 
         $pdo = Database::connect();
         $sql = "SELECT * FROM `tips` WHERE `id_games`= :id_games;";
@@ -131,7 +156,24 @@ class Tip {
         return $result;
     }
 
-    public static function delete(int $id_tips) :bool
+    // Méthode pour afficher les 5 dernières astuces qui ont été ajoutées derniérement
+
+    public static function getFiveTips()
+    {
+        $pdo = Database::connect();
+        $sql = "SELECT `games`. `game`, `tips`.`tip` FROM `tips`
+        INNER JOIN `games`
+        ON `tips`.`id_games`= `games`.`id_games`
+        ORDER BY `tips`.`id_tips` DESC LIMIT 5;;";
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $result = $sth->fetchAll();
+        return $result;
+    }
+
+    // Méthode pour supprimer une astuce
+
+    public static function delete(int $id_tips): bool
     {
         $pdo = Database::connect();
         $sql = "DELETE FROM `tips` WHERE `id_tips` = :id_tips;";

@@ -9,6 +9,11 @@ try {
     $errors = [];
     $title = 'Ajouter une console • DashBoard';
 
+    if($_SESSION['user']->role !== 1 ){
+        header('location: /');
+        die;
+    }
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $console = filter_input(INPUT_POST, 'console', FILTER_SANITIZE_SPECIAL_CHARS);

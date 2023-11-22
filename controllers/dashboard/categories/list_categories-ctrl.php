@@ -7,6 +7,10 @@ require_once __DIR__ . '/../../../config/init.php';
 try {
     $title = " Liste de toutes les catégories • DashBoard ";
     $types = Category::getall();
+    if($_SESSION['user']->role !== 1 ){
+        header('location: /');
+        die;
+    }
 } catch (\Throwable $th) {
     $errors = $th->getMessage();
 

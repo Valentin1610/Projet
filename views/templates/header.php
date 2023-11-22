@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="shortcut icon" href="/public/assets/img/Mario_emblem.png" type="image/x-icon">
     <link rel="stylesheet" href="/public/assets/css/<?= $css ?>">
+    <script defer src="/public/assets/js/<?= $script ?>"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
     <title><?= $title ?></title>
 </head>
 
@@ -20,6 +22,13 @@
     <header>
         <div class="container-fluid">
             <div class="row align-items-center">
+                <div class="col-sm-10">
+                    <div class="card bg-transparent border-0 text-centet mt-4">
+                        <div class="card-body">
+                            <h1 class="text-center text-white"> <a href="/controllers/website/home-ctrl.php">Guide Ultime de Super Mario</a></h1>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-sm-2">
                     <div class="card bg-transparent border-0 text-center mt-2">
                         <div class="card-body p-0">
@@ -36,13 +45,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-10">
-                    <div class="card bg-transparent border-0 text-centet mt-4">
-                        <div class="card-body">
-                            <h1 class="text-center text-white"> <a href="/controllers/website/home-ctrl.php">Guide Ultime de Super Mario</a></h1>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -54,7 +56,7 @@
 
         <nav class="navbar navbar-expand-md ">
             <div class="container-fluid text-center">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">

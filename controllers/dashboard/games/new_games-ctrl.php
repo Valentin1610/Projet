@@ -5,6 +5,7 @@ require_once __DIR__ . '/../../../models/Category.php';
 require_once __DIR__ . '/../../../models/Console.php';
 require_once __DIR__ . '/../../../config/regex.php';
 require_once __DIR__ . '/../../../config/constants.php';
+require_once __DIR__ . '/../../../config/init.php';
 
 
 try {
@@ -12,6 +13,11 @@ try {
     $consoles = Console::getAll();
     $errors = [];
     $title = 'Ajouter un Jeu • DashBoard';
+
+    if($_SESSION['user']->role !== 1 ){
+        header('location: /');
+        die;
+    }
 
     // Les données de l'utilisateur sont transmis en post afin de récupérer les données
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {

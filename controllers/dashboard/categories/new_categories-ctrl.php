@@ -9,6 +9,11 @@ try {
     $errors = [];
     $title = "Ajouter une catégorie • DashBoard";
 
+    if($_SESSION['user']->role !== 1 ){
+        header('location: /');
+        die;
+    }
+
     if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $type = filter_input(INPUT_POST, 'type', FILTER_SANITIZE_SPECIAL_CHARS);
         if (empty($type)) {

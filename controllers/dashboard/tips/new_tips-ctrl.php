@@ -13,6 +13,11 @@ try {
     $title = "Ajout d'une nouvelle astuce";
     $games = Game::get_all_games();
 
+    if($_SESSION['user']->role !== 1 ){
+        header('location: /');
+        die;
+    }
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $tip = filter_input(INPUT_POST, 'tip');

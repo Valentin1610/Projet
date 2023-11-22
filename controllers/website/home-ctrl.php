@@ -4,12 +4,16 @@ require_once __DIR__ .'/../../models/Category.php';
 require_once __DIR__ . '/../../models/Tip.php';
 require_once __DIR__ . '/../../config/init.php';
 require_once __DIR__ . '/../../models/Game.php';
+require_once __DIR__ . '/../../models/Tip.php';
 
 
 try{
+    $errors = [];
     $css = 'style.css';
     $categories = Category::getall();
     $title = 'Accueil • Guide Ultime de Mario';
+    $script = "";
+    $tips = Tip::getFiveTips();
 
 } catch(\Throwable $th){
     $error = $th->getMessage();

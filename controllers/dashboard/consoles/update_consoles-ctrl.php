@@ -11,6 +11,11 @@ try {
     $id_consoles = intval(filter_input(INPUT_GET, 'id_consoles', FILTER_SANITIZE_NUMBER_INT));
     $consolesObj = Console::get($id_consoles);
 
+    if($_SESSION['user']->role !== 1 ){
+        header('location: /');
+        die;
+    }
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $console = filter_input(INPUT_POST, 'console', FILTER_SANITIZE_SPECIAL_CHARS);

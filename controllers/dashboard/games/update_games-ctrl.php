@@ -5,6 +5,7 @@ require_once __DIR__ . '/../../../models/Console.php';
 require_once __DIR__ . '/../../../models/Game.php';
 require_once __DIR__ . '/../../../config/constants.php';
 require_once __DIR__ . '/../../../config/regex.php';
+require_once __DIR__ . '/../../../config/init.php';
 
 try {
     $errors = [];
@@ -13,6 +14,11 @@ try {
     $consoles = Console::getAll();
     $id_games = intval(filter_input(INPUT_GET, 'id_games', FILTER_SANITIZE_NUMBER_INT));
     $games = Game::get($id_games);
+
+    if($_SESSION['user']->role !== 1 ){
+        header('location: /');
+        die;
+    }
 
     // Les données de l'utilisateur sont transmis en post afin de récupérer les données
 

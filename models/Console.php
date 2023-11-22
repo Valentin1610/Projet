@@ -126,7 +126,8 @@ class Console
     public function update() :bool
     {
     $pdo = Database::connect();
-    $sql = "UPDATE `consoles` SET `console` = :console, `logo` = :logo WHERE `id_consoles` = :id_consoles;";
+    $sql = "UPDATE `consoles` SET `console` = :console, `logo` = :logo 
+    WHERE `id_consoles` = :id_consoles;";
     $sth = $pdo->prepare($sql);
     $sth->bindValue(':console', $this->get_console());
     $sth->bindValue(':logo', $this->get_logo());

@@ -11,11 +11,6 @@
             <input class="form-control" type="date" id="inaugurate" name="inaugurate">
             <p><?= isset($errors['inaugurate']) ? $errors['inaugurate'] : "" ?></p>
         </div>
-        <div class="form-group text-center mx-auto w-50 mt-4">
-            <label for="friend_code">Votre code-ami :* </label>
-            <input class="form-control" type="text" id="friend_code" name="friend_code" placeholder="Ex : SW-XXX-XXX-XXX">
-            <p><?= isset($errors['friend_code']) ? $errors['friend_code'] : "" ?></p>
-        </div>
         <p class="text-center mt-4">* : signifie que les champs sont obligatoires</p>
         <div class="text-center">
             <button type="submit" class="btn btn-primary mt-3 text-center">Ajouter un événement</button>

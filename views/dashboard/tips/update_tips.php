@@ -22,7 +22,7 @@
             <select name="id_games" id="id_games">
                 <option disabled selected>-- Sélectionnez un jeu --</option>
                 <?php foreach ($games as $game) { ?>
-                    <option value="<?= $game->id_games ?>"><?= $game->game ?></option>
+                    <option value="<?= $game->id_games ?>" selected><?= $game->game ?></option>
                 <?php } ?>
             </select>
             <p><?= isset($errors['id_games']) ? $errors['id_games'] : "" ?></p>

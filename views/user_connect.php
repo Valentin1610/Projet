@@ -18,7 +18,9 @@
                 <div class="option_field">
                     <a class="text-white" href="#" class="forgot_pw text-black">Mot de Passe oublié ?</a>
                 </div>
-                <button type="submit">Se connecter</button>
+                <div class="text-center">
+                    <button type="submit">Se connecter</button>
+                </div>
                 <div class="login_signup text-white">
                     Tu ne possédes pas de compte ?
                     <a href="/controllers/website/user_registration-ctrl.php" id="login" target="_blank">Inscris-toi</a>

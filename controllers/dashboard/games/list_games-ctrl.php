@@ -4,12 +4,18 @@ require_once __DIR__ . '/../../../models/Game.php';
 require_once __DIR__ . '/../../../models/Category.php';
 require_once __DIR__ . '/../../../models/Console.php';
 require_once __DIR__ . '/../../../config/constants.php';
+require_once __DIR__ . '/../../../config/init.php';
 
 try {
     $title = "Liste de tout les jeux • DashBoard";
+    if($_SESSION['user']->role !== 1 ){
+        header('location: /');
+        die;
+    }
     $consoles = Console::getAll();
     $types = Category::getall();
     $page = intval(filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT));
+
     
     if (empty($page)) {
         $page = 1;

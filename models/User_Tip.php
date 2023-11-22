@@ -27,10 +27,10 @@ class User_Tip
 
     // Méthode pour insérer une astuce en favori
 
-    public function insert(int $id_user, int $id_tips) 
+    public static function insert(int $id_user, int $id_tips) 
     {
         $pdo = Database::connect();
-        $sql = "INSERT INTO `users_tips` (`id_user`, `id_tips`)
+        $sql = "INSERT INTO `users_tips`(`id_user`, `id_tips`)
         VALUES (:id_user, :id_tips);";
         $sth = $pdo->prepare($sql);
         $sth->bindParam(':id_user', $id_user, PDO::PARAM_INT);

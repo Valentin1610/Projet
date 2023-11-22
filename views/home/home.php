@@ -25,12 +25,13 @@
         <div class="col-sm md-4 mb-3 ">
             <div class="card w-50 mx-auto">
                 <div class="card-body">
-                    <p>Derniéres astuces ajoutées</p>
+                    <p class="text-center">Derniéres astuces ajoutées</p>
                     <div>
                         <hr class="line">
                     </div>
-                    <p>Astuces Ajoutées</p>
-                    <p>Astuces Ajoutées</p>
+                    <?php foreach($tips as $tip){ ?>
+                    <p><?= $tip->tip?> (<?=$tip->game?>)</p>
+                    <?php } ?>
                 </div>
             </div>
         </div>

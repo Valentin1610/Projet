@@ -6,44 +6,41 @@ require __DIR__ . '/../../../config/regex.php';
 try {
     $errors = [];
     $title = "Ajouter un événement • DashBoard";
-    $dateTime = new DateTime();
-    $dateTime->format('d-m-y H-i');
+    $currentdate = new DateTime();
+    $currentdate->format('d-m-y H-i');
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $event = filter_input(INPUT_POST, 'event', FILTER_SANITIZE_SPECIAL_CHARS);
-        if(empty($event)){
+        if (empty($event)) {
             $errors['event'] = "Veuillez entrez le nom de l'événement";
-        } else{
-            $isOk = filter_var($event, FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => REGEX_CATEGORY )));
-            if(!$isOk){
+        } else {
+            $isOk = filter_var($event, FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => REGEX_CATEGORY)));
+            if (!$isOk) {
                 $errors['event'] = "Certains caractéres ne sont pas autorisés";
             }
         }
 
         $inaugurate = filter_input(INPUT_POST, 'inaugurate', FILTER_SANITIZE_SPECIAL_CHARS);
-        if(empty($inaugurate)){
+        if (empty($inaugurate)) {
             $errors['inaugurate'] = "Veuillez entrez une date de l'événement";
-        }
-
-        $friend_code = filter_input(INPUT_POST, 'friend_code', FILTER_SANITIZE_SPECIAL_CHARS);
-        if(empty($friend_code)){
-            $errors['friend_code'] = "Veuillez entrez un code-ami";
-        } else{
-            $isOk = filter_var($friend_code, FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => REGEX_FRIEND_CODE )));
-            if(!$isOk){
-                $errors['friend_code'] = "Ce n'est pas le bon format. Respectez ce format : SW-XXX-XXX-XXX";
+        } else {
+            $timedate = new DateTime($inaugurate);
+            $timestamp_date = $timedate->getTimestamp();
+            $timestamp_currentdate = $currentdate->getTimestamp();
+            if ($timestamp_date < $timestamp_currentdate) {
+                $errors['inaugurate'] = "Veuillez entrez une date passé";
             }
         }
-        if(empty($errors)){
+
+        if (empty($errors)) {
             $newEvent = new Event();
             $newEvent->set_event($event);
             $newEvent->set_inaugurate($inaugurate);
-            $newEvent->set_friend_code($friend_code);
-            $saved = $newEvent -> add();
+            $saved = $newEvent->add();
 
-            if($saved){
-                header('location: controllers/events/list_events-ctrl.php');
+            if ($saved) {
+                header('location: /controllers/dashboard/events/list_events-ctrl.php');
                 die;
             }
         }

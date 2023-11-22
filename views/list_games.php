@@ -10,7 +10,7 @@
             <?php foreach ($games as $game) { ?>
                 <div class="col-sm-4 mt-3">
                     <div class="card bg-transparent border-0 text-center align-items-center mt-4">
-                        <div class="card-body p-0">
+                        <div class="card-body p-2">
                             <a href="/controllers/website/list_tips-ctrl.php?id_types=<?= $game->id_types ?>&id_games=<?= $game->id_games ?>">
                                 <img class="w-75 card-img-top rounded p-1 p-lg-5" src="/public/uploads/games/<?= $game->picture ?>" alt="<?= $game->picture ?>"></a>
                         </div>

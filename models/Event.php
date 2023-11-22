@@ -5,8 +5,7 @@ require_once __DIR__ . '/../config/databaseController.php';
 class Event {
     private int $id_events;
     private string $event;
-    private DateTime $inaugurate;
-    private string $friend_code;
+    private string $inaugurate;
 
     public function get_id_events() :int{
         return $this->id_events;
@@ -22,35 +21,27 @@ class Event {
         $this->event = $event;
     }
 
-    public function get_inaugurate() :DateTime{
+    public function get_inaugurate() :string{
         return $this->inaugurate;
     }
-    public function set_inaugurate(DateTime $inaugurate){
+    public function set_inaugurate(string $inaugurate){
         $this->inaugurate = $inaugurate;
-    }
-
-    public function get_friend_code() :string{
-        return $this->friend_code;
-    }
-    public function set_friend_code(string $friend_code){
-        $this->friend_code = $friend_code;
     }
 
     public function add() :bool{
 
         $pdo = Database::connect();
-        $sql = "INSERT INTO `events` (`event`, `inaugurate`, `friend_code`)
-        VALUES (:event, :inaugurate, :friend_code);";
+        $sql = "INSERT INTO `events` (`event`, `inaugurate`)
+        VALUES (:event, :inaugurate);";
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':event', $this->get_event());
         $sth->bindValue(':inaugurate', $this->get_inaugurate());
-        $sth->bindValue('friend_code', $this->get_friend_code());
 
         $result = $sth->execute();
         return $result;
     }
 
-    public static function get(int $id_events) :object{
+    public static function get(int $id_events){
         $pdo =Database::connect();
         $sql = "SELECT * FROM `events`
         WHERE `id_events` = :id_events;";
@@ -74,23 +65,19 @@ class Event {
     public function update() :bool{
 
         $pdo = Database::connect();
-        $sql = "UPDATE `events` SET `event`, `inaugurate`, `friend_code` VALUES (:event; :inaugurate, :friend_code)
+        $sql = "UPDATE `events` SET `event` = :event, `inaugurate` = :inaugurate
         WHERE `id_events` = :id_events;";
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':event', $this->get_event());
         $sth->bindValue(':inaugurate', $this->get_inaugurate());
-        $sth->bindValue(':friend_code',$this->get_friend_code());
         $sth->bindValue(':id_events', $this->get_id_events(), PDO::PARAM_INT);
-        $sth->execute();
-
-        $result = $sth->fetchAll();
-        return $result;
+        return $sth->execute();
     }
 
     public static function delete(int $id_events) :bool {
 
         $pdo = Database::connect();
-        $sql = "DELETE FROM `events` WHERE `id_events` = `id_events`;";
+        $sql = "DELETE FROM `events` WHERE `id_events` = :id_events;";
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':id_events', $id_events, PDO::PARAM_INT);
         $sth->execute();

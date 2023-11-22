@@ -5,7 +5,7 @@
             <div class="col-sm-6">
                 <div class="card bg-transparent border-0">
                     <div class="card-body">
-                        <h2 class="text-center text-white">Liste des favoris</h2>
+                        <h2 class="text-center text-white">Liste des astuces enregistrés</h2>
                         <table class="table w-100 text-center mx-auto mt-5">
                             <thead>
                                 <tr>
@@ -59,4 +59,5 @@
             </div>
         </div>
     </div>
+    <p class="text-center text-white pt-3">Si vous voulez supprimez votre compte, contactez-nous grâce à notre <a href="/controllers/website/contact-ctrl.php">formulaire de contact</a></p>
 </main>

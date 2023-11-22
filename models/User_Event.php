@@ -9,7 +9,7 @@ class User_Event{
     public function get_id_user() : int{
         return $this-> id_user;
     }
-    public function set_id_users(int $id_user){
+    public function set_id_user(int $id_user){
         $this->id_user = $id_user;
     }
 

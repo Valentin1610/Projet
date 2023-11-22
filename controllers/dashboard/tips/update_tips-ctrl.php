@@ -13,8 +13,12 @@ try {
     $id_tips = intval(filter_input(INPUT_GET, 'id_tips', FILTER_SANITIZE_NUMBER_INT));
     $tips = Tip::get($id_tips);
 
-    $games = Game::get_all_games();
+    if ($_SESSION['user']->role !== 1) {
+        header('location: /');
+        die;
+    }
 
+    $games = Game::get_all_games();
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -45,16 +49,14 @@ try {
                 $errors['id_games'] = 'Ce jeu n\'existe pas';
             }
         }
-
         if (empty($errors)) {
             $newTip = new Tip();
-            $newTip->set_id_tips($id_tips);
             $newTip->set_tip($tip);
             $newTip->set_description_tip($description_tip);
+            $newTip->set_id_tips($id_tips);
             $newTip->set_id_games($id_games);
             $saved = $newTip->update();
-            
-            if ($saved) {
+            if ($saved == true) {
                 header('location: /controllers/dashboard/tips/list_tips-ctrl.php');
                 die;
             }

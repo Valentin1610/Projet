@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../../../models/Console.php';
+require_once __DIR__ . '/../../../models/Console.php';
 require_once __DIR__ . '/../../../config/init.php';
 
 

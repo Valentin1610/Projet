@@ -10,8 +10,10 @@ require __DIR__ . '/../../config/init.php';
 try {
     $title = "Calendrier des événements • Guide Ultime de Super Mario ";
     $errors = [];
+    $script = 'calender.js';
     $css = "style.css";
     $categories = Category::getall();
+
 } catch (\Throwable $th) {
     $errors = $th->getMessage();
     include __DIR__ . '/../../views/templates/header.php';

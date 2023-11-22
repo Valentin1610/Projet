@@ -7,7 +7,7 @@
                 <select class="form-control" name="id_types" id="id_types">
                     <option disabled selected>--Sélectionnez la Catégorie--</option>
                     <?php foreach ($types as $type) { ?>
-                        <option value="<?= $type->id_types ?>"><?= $type->type ?></option>
+                        <option value="<?= $type->id_types ?>" selected><?= $type->type ?></option>
                     <?php } ?>
                 </select>
                 <p><?= isset($errors['id_types']) ? $errors['id_types'] : ""  ?></p>
@@ -19,7 +19,7 @@
                 <select class="form-control" name="id_consoles" id="id_consoles" required>
                     <option disabled selected>--Sélectionnez la console du jeu--</option>
                     <?php foreach ($consoles as $console) { ?>
-                        <option value="<?= $console->id_consoles ?>"><?= $console->console ?></option>
+                        <option value="<?= $console->id_consoles ?>" selected><?= $console->console ?></option>
                     <?php } ?>
                 </select>
                 <p><?= isset($errors['id_consoles']) ? $errors['id_consoles'] : ""  ?></p>

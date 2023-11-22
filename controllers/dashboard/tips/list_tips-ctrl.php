@@ -2,6 +2,7 @@
 
 require __DIR__ . '/../../../models/Tip.php';
 require __DIR__ . '/../../../models/Game.php';
+require_once __DIR__ . '/../../../config/init.php';
 
 try {
     $errors = [];
@@ -10,6 +11,11 @@ try {
     $game = Game::get_all();
     $page = intval(filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT));
 
+    if($_SESSION['user']->role !== 1 ){
+        header('location: /');
+        die;
+    }
+    
     if(empty($page)){
         $page = 1;
     }

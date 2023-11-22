@@ -18,15 +18,17 @@ try {
 
     $id_games = intval(filter_input(INPUT_GET, 'id_games', FILTER_SANITIZE_NUMBER_INT));
     $games = Game::get($id_games);
-
-    $id_user = $_SESSION['user']->id_user;
-    $users = User::get($id_user);
-
-    $id_tips = intval(filter_input(INPUT_GET, 'id_tips', FILTER_SANITIZE_NUMBER_INT));
-    $tips = Tip::get($id_tips);
+    
+    $users = "";
+    if(isset($_SESSION['user']) && !empty($_SESSION['user']->id_user)){
+        $id_user = $_SESSION['user']->id_user;
+        $users = User::get($id_user);
+    }  
+        
 
     $categories = Category::getall();
 
+    $id_tips = intval(filter_input(INPUT_GET, 'id_tips', FILTER_SANITIZE_NUMBER_INT));
     $tips = Tip::get_all_tips($id_games);
 
     // Les données de l'utilisateur sont transmis en post afin de récupérer les données

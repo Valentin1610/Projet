@@ -7,6 +7,11 @@ try {
 
     // Récupération de l'id à supprimer et appelle de la méthode delete()
 
+    if($_SESSION['user']->role !== 1 ){
+        header('location: /');
+        die;
+    }
+
     $id_games = intval(filter_input(INPUT_GET, 'id_games', FILTER_SANITIZE_NUMBER_INT));
     $ifDeleted = Game::delete($id_games);
     

@@ -8,6 +8,7 @@ try {
     $title = "Contact • Guide Ultime de Super Mario";
     $css = 'contact.css';
     $categories = Category::getall();
+    $script = "";
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);

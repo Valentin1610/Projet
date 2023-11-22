@@ -3,18 +3,13 @@
     <form method="post" enctype="multipart/form-data">
         <div class="form-group text-center mx-auto w-50 mt-4">
             <label for="event">Nom de l'événement :* </label>
-            <input class="form-control" type="text" id="event" name="event" placeholder="Ex : Tournoi Mario Kart">
+            <input class="form-control" type="text" id="event" name="event" placeholder="Ex : Tournoi Mario Kart" value="<?= $event->event ?>">
             <p><?= isset($errors['event']) ? $errors['event'] : "" ?></p>
         </div>
         <div class="form-group text-center mx-auto w-50 mt-4">
             <label for="inaugurate">Date de l'événement :* </label>
-            <input class="form-control" type="date" id="inaugurate" name="inaugurate">
+            <input class="form-control" type="date" id="inaugurate" name="inaugurate" value="<?= $event->inaugurate ?>">
             <p><?= isset($errors['inaugurate']) ? $errors['inaugurate'] : "" ?></p>
-        </div>
-        <div class="form-group text-center mx-auto w-50 mt-4">
-            <label for="event">Votre code-ami :* </label>
-            <input class="form-control" type="text" id="event" name="event" placeholder="Ex : SW-XXX-XXX-XXX">
-            <p><?= isset($errors['friend_code']) ? $errors['friend_code'] : "" ?></p>
         </div>
         <p class="text-center mt-4">* : signifie que les champs sont obligatoires</p>
         <div class="text-center">

@@ -61,7 +61,7 @@ try {
                     $extension = pathinfo($profil['name'], PATHINFO_EXTENSION);
                     $newProfil = uniqid('img_') . '.' . $extension;
                     $from = $profil['tmp_name'];
-                    $to = __DIR__ . '/../../public/uploads/profiles/'. $newProfil;
+                    $to = __DIR__ . '/../../public/uploads/profiles/' . $newProfil;
                     move_uploaded_file($from, $to);
                 }
             } else {
@@ -77,9 +77,8 @@ try {
             $newUser = new User();
             // Vérification de la disponibilité du pseudo et de l'email
             if (User::ifExists($username, $email)) {
-                $errors['user'] = "Le pseudo existe déjà";
-                $errors['email'] = "L'email existe déjà";
-            } else {
+                $errors['user'] = "Le pseudo et/ou l'email existe déjà";
+            } {
                 // Si il n'y a pas d'erreur, on hydrate l'objet
                 $newUser->set_username($username);
                 $newUser->set_email($email);
@@ -89,7 +88,7 @@ try {
                 // Enregistrement de l'utilisateur dans la base de données
                 $saved = $newUser->add();
 
-                
+
                 if ($saved) {
                     header('location: /controllers/website/user_registration-ctrl.php');
                     die;

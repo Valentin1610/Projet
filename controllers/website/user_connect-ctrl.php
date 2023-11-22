@@ -10,7 +10,7 @@ try {
     $title = "Se Connecter • Guide Ultime de Super Mario";
     $css = 'connexion.css';
     $categories = Category::getall();
-    $script = 'script.js';
+    $script = "script.js";
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
