@@ -12,7 +12,6 @@
     <h2>Présentation du Site</h2>
     <p class="p-4">
         Bienvenue au Royaume Champignon ou plutôt bienvenue sur mon Site Internet où vous trouverez pleins d'astuces sur les différents Jeux Mario. <br>Mais aussi des inscriptions à des Tournois sur différents Jeux Mario.
-        Créer par Valentin Sucaud.
     </p>
 </section>
 
@@ -23,14 +22,14 @@
 <div class="container-fluid p-3">
     <div class="row">
         <div class="col-sm md-4 mb-3 ">
-            <div class="card w-50 mx-auto">
+            <div class="card w-75 p-0 mx-auto">
                 <div class="card-body">
-                    <p class="text-center">Derniéres astuces ajoutées</p>
+                    <p class="text-center">Dernières astuces ajoutées</p>
                     <div>
                         <hr class="line">
                     </div>
-                    <?php foreach($tips as $tip){ ?>
-                    <p><?= $tip->tip?> (<?=$tip->game?>)</p>
+                    <?php foreach ($tips as $tip) { ?>
+                        <p class="text-center"><?= $tip->tip ?> (<?= $tip->game ?>)</p>
                     <?php } ?>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <main>
-    <h2 class="mt-4 text-center">Liste de touts les événements</h2>
+    <h2 class="mt-4 text-center">Liste de tous les événements</h2>
     <table class="table mt-4">
         <thead>
             <tr>

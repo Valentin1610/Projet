@@ -1,29 +1,29 @@
 const pwShowHide = document.querySelectorAll(".pw_hide");
-let username = document.getElementById('username');
-let usernameError = document.getElementById('usernameerrortext');
+let user = document.getElementById('user');
+let userError = document.getElementById('usererrortext');
 let password = document.getElementById('password');
 let sentencePassword = document.getElementById('sentenceErrorPassword');
 
-const regexusername = /^[a-zA-Z0-9 éèàù\-_]*$/;
+const regexuser = /^[a-zA-Z0-9 éèàù\-_]*$/;
 const regexPassword = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&]).{12,}$/;
 
 
-const checkusername = () => {
-    username.classList.remove('is-valid','is-invalid');
-    usernameError.classList.add('d-none');
+const checkuser = () => {
+    user.classList.remove('is-valid','is-invalid');
+    userError.classList.add('d-none');
 
-    if(username.value === ''){
+    if(user.value === ''){
         return;
     }
 
-    let regexusernameUser = regexusername.test(username.value);
+    let regexuserUser = regexuser.test(user.value);
 
-    if(!regexusernameUser){
-        username.classList.add('is-invalid','border-3');
-        usernameError.classList.remove('d-none');
+    if(!regexuserUser){
+        user.classList.add('is-invalid','border-3');
+        userError.classList.remove('d-none');
     } else{
-        username.classList.add('is-valid','border-3');
-        usernameError.classList.add('d-none');
+        user.classList.add('is-valid','border-3');
+        userError.classList.add('d-none');
     }
 }
 
@@ -61,5 +61,5 @@ pwShowHide.forEach((icon) => {
 
 
 
-username.addEventListener('input', checkusername);
+user.addEventListener('input', checkuser);
 password.addEventListener('input', checkPassword);

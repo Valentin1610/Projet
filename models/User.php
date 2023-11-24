@@ -4,7 +4,7 @@ require_once  __DIR__ . '/../config/databaseController.php';
 
 class User {
     private int $id_user;
-    private string $username;
+    private string $user;
     private string $email;
     private string $password;
     private ?string $profile;
@@ -17,11 +17,11 @@ class User {
         $this->id_user = $id_user;
     }
 
-    public function get_username() :string{
-        return $this->username;
+    public function get_user() :string{
+        return $this->user;
     }
-    public function set_username(string $username){
-        $this->username = $username;
+    public function set_user(string $user){
+        $this->user = $user;
     }
 
     public function get_email() :string{
@@ -56,10 +56,10 @@ class User {
     public function add() :bool{
 
         $pdo = Database::connect();
-        $sql = "INSERT INTO `users` (`username`, `email`, `password` ,`profil`)
-        VALUES (:username, :email, :password, :profil);";
+        $sql = "INSERT INTO `users` (`user`, `email`, `password` ,`profil`)
+        VALUES (:user, :email, :password, :profil);";
         $sth= $pdo->prepare($sql);
-        $sth->bindValue(':username', $this->get_username());
+        $sth->bindValue(':user', $this->get_user());
         $sth->bindValue(':email', $this->get_email());
         $sth->bindValue(':password', $this->get_password());
         $sth->bindValue(':profil', $this->get_profile());
@@ -85,13 +85,13 @@ class User {
 
         $pdo = Database::connect();
         $sql = "UPDATE `users` SET 
-        `username` = :username,
+        `user` = :user,
         `email` = :email,
         `password` = :password,
         `profile` = :profile
         WHERE `id_user` = :id_user";
         $sth = $pdo->prepare($sql);
-        $sth->bindValue(':username', $this->get_username());
+        $sth->bindValue(':user', $this->get_user());
         $sth->bindValue(':email', $this->get_email());
         $sth->bindValue(':password', $this->get_password());
         $sth->bindValue(':profile', $this->get_profile());
@@ -114,27 +114,27 @@ class User {
         return $result;
     }
 
-    public static function getByUsername(string $username)
+    public static function getByuser(string $user)
     {
         $pdo = Database::connect();
-        $sql = "SELECT * FROM `users` WHERE `username` =:username ;";
+        $sql = "SELECT * FROM `users` WHERE `user` =:user ;";
         $sth = $pdo->prepare($sql);
-        $sth->bindValue(':username', $username);
+        $sth->bindValue(':user', $user);
         $sth->execute();
         $result = $sth->fetch();
 
         return $result;
     }
 
-    public static function ifExists(string $username, string $email){
+    public static function ifExists(string $user, string $email){
 
         $pdo = Database::connect();
-        $sql = "SELECT `users`.`username`, `users`.`email` FROM `users` WHERE `username` = :username OR `email` = :email;";
+        $sql = "SELECT COUNT(*) FROM `users` WHERE `user` = :user OR `email` = :email;";
         $sth=$pdo->prepare($sql);
-        $sth->bindValue(':username',$username);
-        $sth->bindValue(':email',$email);
+        $sth->bindParam(':user',$user);
+        $sth->bindParam(':email',$email);
         $sth->execute();
-        $result = $sth->fetch();
+        $result = $sth->fetchColumn();
 
         return $result;
     } 

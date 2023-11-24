@@ -1,7 +1,7 @@
 const pwShowHide = document.querySelectorAll('.pw_hide');
 
-let username = document.getElementById('username');
-let sentenceUsername = document.getElementById('helpusername');
+let user = document.getElementById('user');
+let sentenceuser = document.getElementById('helpuser');
 let email = document.getElementById('email');
 let sentenceEmail = document.getElementById('helpmail');
 
@@ -10,25 +10,25 @@ let passwordContent = document.getElementById('contentpassword');
 let passwordInputVerif = document.getElementById('passwordVerif');
 let passwordHelp = document.getElementById('passwordHelp');
 
-const regexUsername = /^[a-zA-Z0-9_-]{4,20}$/;
+const regexuser = /^[a-zA-Z0-9_-]{4,20}$/;
 const regexEmail =/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 const regexPassword = /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&]).{12,}$/;
 
-const checkUsername = () => {
-    username.classList.remove('is-valid', 'is-invalid');
-    sentenceUsername.classList.add('d-none');
+const checkuser = () => {
+    user.classList.remove('is-valid', 'is-invalid');
+    sentenceuser.classList.add('d-none');
 
-    if(username.value === ''){
+    if(user.value === ''){
         return;
     }
-    let usernameRegex = regexUsername.test(username.value);
+    let userRegex = regexuser.test(user.value);
 
-    if(!usernameRegex){
-        username.classList.add('is-invalid', 'border-3');
-        sentenceUsername.classList.remove('d-none');
+    if(!userRegex){
+        user.classList.add('is-invalid', 'border-3');
+        sentenceuser.classList.remove('d-none');
     } else{
-        username.classList.add('is-valid','border-3');
-        sentenceUsername.classList.add('d-none');
+        user.classList.add('is-valid','border-3');
+        sentenceuser.classList.add('d-none');
     }
 
 }
@@ -95,7 +95,7 @@ pwShowHide.forEach((icon) => {
     })
 })
 
-username.addEventListener('input', checkUsername);
+user.addEventListener('input', checkuser);
 email.addEventListener('input',checkEmail);
 passwordInput.addEventListener('input',checkPassword);
 passwordInputVerif.addEventListener('input',checkPassword);

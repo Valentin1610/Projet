@@ -3,21 +3,24 @@
 require __DIR__ . '/../../models/User.php';
 require __DIR__ . '/../../models/Category.php';
 require __DIR__ . '/../../config/init.php';
+require __DIR__ . '/../../models/Contact.php';
 
 try {
+    $errors = [];
     $title = "Contact • Guide Ultime de Super Mario";
     $css = 'contact.css';
     $categories = Category::getall();
     $script = "";
+    $description = "Envie d'en savoir plus ou de poser une question à un administrateur ? Vous pouvez envoyer un message grâce au formulaire de contact.";
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
-        if(empty($username)){
+        $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_SPECIAL_CHARS);
+        if(empty($user)){
             $errors['user'] = "Veuillez entrez votre pseudo";
         } else{
-            $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => REGEX_USERNAME)));
+            $isOk = filter_var($user, FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => REGEX_USER)));
             if(!$isOk){
-                $erros['user'] = "Ce pseudo n'est pas valide";
+                $errors['user'] = "Ce pseudo n'est pas valide";
             }
         }
 
@@ -26,7 +29,7 @@ try {
             $errors ['email'] = "Veuillez entrez une adresse mail";
         } else{
             $isOk = filter_var($email, FILTER_VALIDATE_EMAIL);
-            if($email == false ){
+            if(!$isOk){
                 $errors['email'] = "Cette adresse mail n'est pas valide";
             }
         }
@@ -47,6 +50,29 @@ try {
         } else{
             if(strlen($content) < 50 || strlen($content) > 500){
                 $errors['content'] = "Entrez votre message entre 50 et 500 caractéres";
+            }
+        }
+
+        if(empty($errors)){
+            $newContact = new Contact();
+            $newContact->set_user($user);
+            if(!Contact::ifExistsByUser($user)){
+                $errors['user'] = "Veuillez entrer un pseudo déjà enregistré";
+            }
+            $newContact->set_email($email);
+            if(!Contact::ifExistsByEmail($email)){
+                $errors['email'] = "Veuillez entrer un email déjà enregistré";
+            }
+            if(!Contact::ifExistsByEmail($email) && !Contact::ifExistsByUser($user)){
+                $errors['contact'] = "L'email et le pseudo ne sont pas enregistrées.";
+            }
+            $newContact->set_object($object);
+            $newContact->set_content($content);
+            $saved = $newContact->add(); 
+
+            if($saved){
+                header('location: /controller/website/confirm_contact-ctrl.php');
+                die;
             }
         }
     }

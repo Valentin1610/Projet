@@ -13,6 +13,7 @@ try{
     $categories = Category::getall();
     $title = 'Accueil • Guide Ultime de Mario';
     $script = "";
+    $description = "Bienvenue dans le Guide Ultime de l'univers Mario, vous trouverez un tas d'astuces dans l'univers Mario et pleins d'autres surprises.";
     $tips = Tip::getFiveTips();
 
 } catch(\Throwable $th){

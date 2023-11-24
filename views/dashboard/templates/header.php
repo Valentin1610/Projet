@@ -15,7 +15,7 @@
     <header class="bg-primary h-75">
         <nav class="navbar navbar-expand-md">
             <a class="text-decoration-none" href="/controllers/dashboard/dashboard-ctrl.php">
-                <h1 class="text-center text-dark fst-italic p-2 m-3">DashBoard</h1>
+                <h1 class="text-center text-white fst-italic p-2 m-3">DashBoard</h1>
             </a>
             <div class="container-fluid text-center">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,7 @@
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="navbar-nav m-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Catégories
                             </a>
                             <ul class="dropdown-menu">
@@ -33,7 +33,7 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Consoles
                             </a>
                             <ul class="dropdown-menu">
@@ -42,7 +42,7 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Jeux
                             </a>
                             <ul class="dropdown-menu">
@@ -51,7 +51,7 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Astuces
                             </a>
                             <ul class="dropdown-menu">
@@ -60,7 +60,7 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Évenements
                             </a>
                             <ul class="dropdown-menu">
@@ -69,7 +69,7 @@
                             </ul>
                         </li>
                         <a class="text-decoration-none" href="/controllers/website/home-ctrl.php">
-                            <p class="text-dark fst-italic p-2">Retour sur le site</p>
+                            <p class="text-white fst-italic p-2">Retour sur le site</p>
                         </a>
                     </ul>
                 </div>

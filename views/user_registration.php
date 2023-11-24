@@ -9,16 +9,16 @@
             <form method="post" enctype="multipart/form-data">
                 <h2 class="text-center mt-2">S'inscrire</h2>
                 <div class="input_box">
-                    <label for="username">Pseudo : *</label>
-                    <input class="form-control" type="text" id="username" name="username" placeholder="Entrez votre pseudo" required>
-                    <p class="d-none form-text error text-danger" id="helpusername">Veuillez entrez un Pseudo valide qui contient au moins 4 caractéres</p>
-                    <p><?= isset($errors['user']) ? $errors['user'] : "" ?></p>
+                    <label for="user">Pseudo : *</label>
+                    <input class="form-control" type="text" id="user" name="user" placeholder="Entrez votre pseudo" required>
+                    <p class="d-none form-text error text-danger" id="helpuser">Veuillez entrer un Pseudo valide qui contient au moins 4 caractéres</p>
+                    <p class="text-danger"><?= isset($errors['user']) ? $errors['user'] : "" ?></p>
                 </div>
                 <div class="input_box">
                     <label for="email">Adresse Mail : *</label>
                     <input class="form-control" type="email" name="email" id="email" placeholder="Entrez votre adresse mail" required>
-                    <p class="d-none form-text error text-danger" id="helpmail">Veuillez entrez un email valide</p>
-                    <p><?= isset($errors['email']) ? $errors['email'] : "" ?></p>
+                    <p class="d-none form-text error text-danger" id="helpmail">Veuillez entrer un email valide</p>
+                    <p class="text-danger"><?= isset($errors['user']) ? $errors['user'] : "" ?></p>
                 </div>
                 <div class="input_box">
                     <label for="password">Mot de passe : *</label>
@@ -31,7 +31,7 @@
                     <label for="passwordVerif">Confirmez votre mot de passe : *</label>
                     <input class="form-control" type="password" name="passwordVerif" id="passwordVerif" placeholder="Confirmez votre mot de passe" required>
                     <i class="uil uil-eye-slash pw_hide"></i>
-                    <p id="passwordHelp" class="d-none form-text error text-danger">Votre mot de passe n'est pas identique</p>
+                    <p id="passwordHelp" class="d-none form-text error text-danger">Vos mots de passe ne sont pas identiques</p>
                     <p><?= isset($errors['passwordVerif']) ? $errors['passwordVerif'] : "" ?></p>
                 </div>
                 <div class="input_box">

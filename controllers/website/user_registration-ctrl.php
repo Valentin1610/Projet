@@ -11,19 +11,21 @@ try {
     $title = "S'inscrire • Guide Ultime de Super Mario";
     $categories = Category::getall();
     $script = 'registration.js';
+    $description = "Vous pouvez vous inscrire avec un pseudo, un email, un mot de passe , une photo de profil.";
 
     $id_users = intval(filter_input(INPUT_GET, 'id_users', FILTER_SANITIZE_NUMBER_INT));
     $role = intval(filter_input(INPUT_POST, 'role', FILTER_SANITIZE_NUMBER_INT));
+
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Nettoyage des données envoyées par l'utilisateur 
 
-        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
-        if (empty($username)) {
+        $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($user)) {
             $errors['user'] = "Veuillez entrez un pseudo obligatoire";
         } else {
-            $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => REGEX_USERNAME)));
+            $isOk = filter_var($user, FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => REGEX_USER)));
             if (!$isOk) {
                 $errors['user'] = "Certains caractéres ne sont pas autorisés";
             }
@@ -58,29 +60,31 @@ try {
                     throw new Exception("Fichier trop lourd");
                 }
                 if (empty($errors)) {
-                    $extension = pathinfo($profil['name'], PATHINFO_EXTENSION);
+                    $extension = pathinfo($profil[''], PATHINFO_EXTENSION);
                     $newProfil = uniqid('img_') . '.' . $extension;
-                    $from = $profil['tmp_name'];
+                    $from = $profil['tmp_'];
                     $to = __DIR__ . '/../../public/uploads/profiles/' . $newProfil;
                     move_uploaded_file($from, $to);
                 }
             } else {
-                $newProfil = '/../../public/uploads/profiles/profil.png';
+                $newProfil = '/../../public/uploads/profiles/profil.jpg';
             }
         } catch (\Throwable $th) {
-            $errors = $th->getMessage();
+            $errors[] = $th->getMessage();
         }
+
         if (empty($errors)) {
             // Attribution du rôle utilisateur lors de l'inscription
             $role = 0;
             // Créeation d'un nouvel objet de la class User
             $newUser = new User();
             // Vérification de la disponibilité du pseudo et de l'email
-            if (User::ifExists($username, $email)) {
+            if (User::ifExists($user, $email)) {
                 $errors['user'] = "Le pseudo et/ou l'email existe déjà";
-            } {
+            } else {
+
                 // Si il n'y a pas d'erreur, on hydrate l'objet
-                $newUser->set_username($username);
+                $newUser->set_user($user);
                 $newUser->set_email($email);
                 $newUser->set_password($password);
                 $newUser->set_profile($newProfil);
@@ -88,10 +92,10 @@ try {
                 // Enregistrement de l'utilisateur dans la base de données
                 $saved = $newUser->add();
 
-
                 if ($saved) {
-                    header('location: /controllers/website/user_registration-ctrl.php');
+                    header('location: /controllers/website/confirm-ctrl.php');
                     die;
+
                 }
             }
         }

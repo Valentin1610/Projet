@@ -11,32 +11,33 @@ try {
     $css = 'connexion.css';
     $categories = Category::getall();
     $script = "script.js";
+    $description = "Vous pouvez vous connecter à ce site avec votre pseudo et votre mot de passe associé";
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
-        if (empty($username)) {
-            $errors['user'] = "Veuillez entrez un username";
+        $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($user)) {
+            $errors['user'] = "Veuillez entrez un user";
         }
 
         $password = filter_input(INPUT_POST, 'password', FILTER_DEFAULT);
         if (empty($password)) {
             $errors['password'] = "Veuillez entrez un mot de passe";
         } elseif (strlen($password) < 12) {
-            $errors['password'] = "Veuillez entrez un mot de passe avec au moins 12 caractéres";
+            $errors['password'] = "Veuillez entrez un mot de passe valide";
         }
 
         if (empty($errors)) {
-            $username = User::getByUsername($username);
+            $user = User::getByuser($user);
             try {
-                if (!$username) {
+                if (!$user) {
                     throw new Exception("Le pseudo n'exsite pas", 1);
                 }
-                $isOk = password_verify($password, $username->password);
+                $isOk = password_verify($password, $user->password);
                 if (!$isOk) {
                     throw new Exception("Mot de passe incorrect", 2);
                 }
-                unset($username->password);
-                $_SESSION['user'] = $username;
+                unset($user->password);
+                $_SESSION['user'] = $user;
                 $_SESSION['role'] = 0;
                 header('location: /controllers/website/home-ctrl.php');
                 die;

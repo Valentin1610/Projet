@@ -5,7 +5,7 @@
             <div class="form-group w-25 mx-auto text-center mt-4">
                 <label for="id_types">Catégorie :*</label>
                 <select class="form-control" name="id_types" id="id_types">
-                    <option disabled selected>--Sélectionnez la Catégorie--</option>
+                    <option disabled selected>--Sélectionner la Catégorie--</option>
                     <?php foreach ($types as $type) { ?>
                         <option value="<?= $type->id_types ?>"><?= $type->type ?></option>
                     <?php } ?>
@@ -17,7 +17,7 @@
             <div class="form-group w-25 mx-auto text-center mt-4">
                 <label for="id_consoles">Console :*</label>
                 <select class="form-control" name="id_consoles" id="id_consoles" required>
-                    <option disabled selected>--Sélectionnez la console du jeu --</option>
+                    <option disabled selected>--Sélectionner la console du jeu --</option>
                     <?php foreach ($consoles as $console) { ?>
                         <option value="<?= $console->id_consoles ?>"><?= $console->console ?></option>
                     <?php } ?>

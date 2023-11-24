@@ -8,7 +8,7 @@ try {
     $id_tips = intval(filter_input(INPUT_GET, 'id_tips', FILTER_SANITIZE_NUMBER_INT));
     $id_user = intval(filter_input(INPUT_GET, 'id_user', FILTER_SANITIZE_NUMBER_INT));
     $ifDeleted = User_Tip::delete($id_user, $id_tips);
-    header('location: /controllers/website/user_profil-ctrl.php?delete='. $ifDeleted);
+    header('location: /controllers/website/user_profil-ctrl.php?id_user='.$id_user.'&delete='.$ifDeleted);
     die;
 } catch (\Throwable $th) {
     $errors = $th->getMessage();

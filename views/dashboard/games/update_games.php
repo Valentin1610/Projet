@@ -3,9 +3,9 @@
     <form method="post" enctype="multipart/form-data">
         <div class="col">
             <div class="form-group w-25 mx-auto text-center mt-4">
-                <label for="id_types">Catégorie*</label>
+                <label for="id_types">Catégorie :*</label>
                 <select class="form-control" name="id_types" id="id_types">
-                    <option disabled selected>--Sélectionnez la Catégorie--</option>
+                    <option disabled selected>--Sélectionner la Catégorie--</option>
                     <?php foreach ($types as $type) { ?>
                         <option value="<?= $type->id_types ?>" selected><?= $type->type ?></option>
                     <?php } ?>
@@ -15,9 +15,9 @@
         </div>
         <div class="col">
             <div class="form-group w-25 mx-auto text-center mt-4">
-                <label for="id_consoles">Console*</label>
+                <label for="id_consoles">Console :*</label>
                 <select class="form-control" name="id_consoles" id="id_consoles" required>
-                    <option disabled selected>--Sélectionnez la console du jeu--</option>
+                    <option disabled selected>--Sélectionner la console du jeu--</option>
                     <?php foreach ($consoles as $console) { ?>
                         <option value="<?= $console->id_consoles ?>" selected><?= $console->console ?></option>
                     <?php } ?>
@@ -28,7 +28,7 @@
         </div>
         <div class="col">
             <div class="form-group w-25 mx-auto text-center mt-4">
-                <label for="game">Nom du Jeu*</label>
+                <label for="game">Nom du Jeu : *</label>
                 <input value="<?= $games->game ?>" class="form-control" type="text" name="game" id="game">
                 <p><?= isset($errors['game']) ? $errors['game'] : ""  ?></p>
             </div>
@@ -47,7 +47,7 @@
             <input class="form-control w-50 mx-auto mt-4" type="file" name="picture" id="picture" accept="image/png, image/jpeg, image/jpg">
             <p><?= isset ($errors['picture']) ? $errors['picture'] : "" ?></p>
         </div>
-        <p class="text-center mt-4">* : signifie que les champs sont obligatoire</p>
+        <p class="text-center mt-4">* : signifie que les champs sont obligatoires</p>
         <div class="form-group mt-4 text-center">
             <button type="submit" class="btn btn-primary">Ajouter un jeu</a>
         </div>

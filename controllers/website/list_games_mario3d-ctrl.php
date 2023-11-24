@@ -8,6 +8,8 @@ include __DIR__ . '/../../config/init.php';
 try {
     $errors = [];
     $css = 'style.css';
+
+    $description = "La liste des jeux Mario qui correspondent à la console.";
     
     $categories = Category::getall();
     

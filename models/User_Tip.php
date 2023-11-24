@@ -27,7 +27,7 @@ class User_Tip
 
     // Méthode pour insérer une astuce en favori
 
-    public static function insert(int $id_user, int $id_tips) 
+    public static function insert(int $id_user, int $id_tips)
     {
         $pdo = Database::connect();
         $sql = "INSERT INTO `users_tips`(`id_user`, `id_tips`)
@@ -40,17 +40,19 @@ class User_Tip
 
     // Méthode pour récupérer les informations et afficher en favori
 
-    public static function getFav(): array
+    public static function getFav(int $id_user): array
     {
 
         $pdo = Database::connect();
-        $sql = "SELECT `users_tips`.*, `tips`.`tip`, `tips`.`description_tip`
+        $sql = "SELECT `users_tips`.*, `tips`.`tip`, `tips`.`description_tip`, `users`.`id_user`
         FROM `users_tips`
-        JOIN `tips` ON  `users_tips`.`id_tips` = `tips`.`id_tips`;";
+        JOIN `tips` ON `users_tips`.`id_tips` = `tips`.`id_tips`
+        JOIN `users` ON `users_tips`.`id_user` = `users`.`id_user`
+        WHERE `users_tips`.`id_user` = :id_user;";
         $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id_user', $id_user, PDO::PARAM_INT);
         $sth->execute();
         $result = $sth->fetchAll();
-
         return $result;
     }
 

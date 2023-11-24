@@ -1,14 +1,23 @@
+
+<!-- Début du footer -->
 <footer class="mt-4">
     <div class="container-fluid p-3">
         <div class="row">
-            <div class="col-sm mb-6 md-6 bg-none text-center">
+            <div class="col-sm mb-4 bg-none text-center">
                 <div class="card bg-transparent border-0">
                     <div class="card-body text-white">
                         <p>Guide Ultime de Super Mario n'est pas un <strong>site officiel de Nintendo et sans aucun but commercial.</strong> Les personnages et les jeux cités sont <strong>une propriété de Nintendo.</strong></p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm mb-6 md-6">
+            <div class="col-sm mb-4 ">
+                <div class="card bg-transparent border-0 text-center">
+                    <div class="card-body text-white">
+                        <a href="/controllers/website/legal_notice-ctrl.php">Mentions Légales</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm mb-4">
                 <div class="card bg-transparent border-0 text-center">
                     <div class="card-body text-white">
                         <a class="tophead" href="#top">Remonter<img class="btnstar" src="/public/assets/img/Anneau.png" alt="Star"></a>

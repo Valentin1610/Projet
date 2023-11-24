@@ -2,10 +2,10 @@
     <h2 class="text-white text-center mt-4">Modifier votre profil</h2>
     <div class="container-fluid mt-4">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-7">
                 <div class="card bg-transparent border-0">
                     <div class="card-body">
-                        <h2 class="text-center text-white">Liste des astuces enregistrés</h2>
+                        <h2 class="text-center text-white">Liste des astuces enregistrées</h2>
                         <table class="table w-100 text-center mx-auto mt-5">
                             <thead>
                                 <tr>
@@ -31,13 +31,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-5">
                 <div class="card bg-transparent border-0">
                     <div class="card-body ">
                         <form method="post" enctype="multipart/form-data">
                             <div class="form-label text-center">
-                                <label class="text-white" for="username">Votre Pseudo: * </label>
-                                <input class="form-control" value="<?= $_SESSION['user']->username ?>" type="text" name="username" id="username">
+                                <label class="text-white" for="user">Votre Pseudo: * </label>
+                                <input class="form-control" value="<?= $_SESSION['user']->user ?>" type="text" name="user" id="user">
                             </div>
                             <div class="form-label text-center mt-4">
                                 <label class="text-white" for="email">Votre adresse mail: * </label>

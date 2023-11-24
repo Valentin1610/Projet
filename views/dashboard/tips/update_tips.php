@@ -20,7 +20,7 @@
         <div class="form-group w-50 mx-auto mt-4 text-center">
             <label for="id_games">Nom du jeu * </label>
             <select name="id_games" id="id_games">
-                <option disabled selected>-- Sélectionnez un jeu --</option>
+                <option disabled selected>-- Sélectionner un jeu --</option>
                 <?php foreach ($games as $game) { ?>
                     <option value="<?= $game->id_games ?>" selected><?= $game->game ?></option>
                 <?php } ?>

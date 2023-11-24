@@ -1,5 +1,5 @@
 <main>
-    <h2 class="text-center mt-4">Modifier la consoles</h2>
+    <h2 class="text-center mt-4">Modifier la console</h2>
     <form method="post" enctype="multipart/form-data">
         <div class="form-group w-50 mx-auto text-center mt-4">
             <label for="console">Modifier le nom de la console*</label>

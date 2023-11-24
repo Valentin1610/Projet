@@ -1,4 +1,4 @@
-<h2 class="text-center mt-4">Liste de toutes les consoles de Jeu</h2>
+<h2 class="text-center mt-4">Liste de toutes les consoles de Jeux</h2>
 <div class="container-fluid text-center mt-4">
     <div class="row justify-content-center">
         <table class="table table-striped w-75">

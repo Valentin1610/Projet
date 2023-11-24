@@ -1,5 +1,5 @@
 <main>
-    <h2 class="text-center mt-4">Liste de tout les utilisateurs</h2>
+    <h2 class="text-center mt-4">Liste de tous les utilisateurs</h2>
     <div class="container-fluid text-center mt-5">
         <div class="row justify-content-center">
             <table class="table table-striped w-75" >
@@ -14,7 +14,7 @@
                 <tbody>
                     <?php foreach($users as $user){ ?>
                     <tr>
-                        <td><?= $user->username ?></td>
+                        <td><?= $user->user ?></td>
                         <td><?= $user->email ?></td>
                         <td>
                             <a href="/controllers/dashboard/users/update_users-ctrl.php">

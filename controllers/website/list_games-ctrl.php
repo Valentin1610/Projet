@@ -10,6 +10,7 @@ try {
     $errors = [];
     $css = 'style.css';
     $title = "Liste des jeux • Guide Ultime de Super Mario";
+    $description = "Voici une liste des jeux qui correspondent à la catégorie.";
 
     $id_types = intval(filter_input(INPUT_GET, 'id_types', FILTER_SANITIZE_NUMBER_INT));
     $types = Category::get($id_types);

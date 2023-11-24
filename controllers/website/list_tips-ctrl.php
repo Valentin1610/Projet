@@ -12,6 +12,7 @@ try {
     $errors = [];
     $title = "Liste des astuces • Guide Ultime de Super Mario";
     $css = "style.css";
+    $description = "Voici la liste des astuces qui correspondent au jeu associé"; 
 
     $id_types = intval(filter_input(INPUT_GET, 'id_types', FILTER_SANITIZE_NUMBER_INT));
     $types = Category::get($id_types);
